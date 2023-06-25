@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -8,26 +6,36 @@ using UnityEngine;
 [System.Serializable]
 public class ItemStack
 {
+    
     /// <summary>
     /// Initializes a new instance of the Pair record with the specified key and value.
     /// </summary>
     public ItemStack(ItemData item, int number)
     {
-        (_item, Number) = (item, number);
+        Item = item;
+        Number = number;
     }
+    
 
     /// <summary>
     /// Initializes a new instance of the Pair record with the specified key.
     /// </summary>
     public ItemStack(ItemData item)
     {
-        (_item, Number) = (item, 1);
+        Item = item;
+        Number = 1;
     }
+    
 
     /// <summary>
     /// The item of the ItemStack.
     /// </summary>
-    public ItemData Item => _item;
+    public ItemData Item
+    {
+        get => _item;
+        protected set => _item = value;
+    }
+    
 
     /// <summary>
     /// The number of the item in the ItemStack.
@@ -37,11 +45,13 @@ public class ItemStack
         get => _number;
         set => _number = Mathf.Clamp(value, 0, Item.MaxStackTimes);
     }
+    
 
     /// <summary>
     /// If number equals 0.
     /// </summary>
     public bool IsEmpty => Number == 0;
+    
 
     /// <summary>
     /// If number equals max stack times.

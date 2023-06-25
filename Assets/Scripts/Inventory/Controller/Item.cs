@@ -38,7 +38,7 @@ public class Item : MonoBehaviour, IInteractive
     /// </summary>
     public void Interact()
     {
-        if (InventoryManager.PlayerInventory?.Add(Data) != null)
+        if (InventoryManager.PlayerInventory.Add(Data, out _))
         {
             Destroy(gameObject);
         }

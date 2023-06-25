@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public InventoryData Data => _data;
 
-    public ItemStack Add(ItemData item) => Data.Add(item);
+    public bool Add(ItemData item, out ItemStack stack) => Data.Add(item, out stack);
 
     [SerializeField] private InventoryData _data;
 

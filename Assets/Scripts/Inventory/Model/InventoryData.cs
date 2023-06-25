@@ -1,6 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// An Inventory contains some Items.
@@ -13,99 +14,96 @@ public class InventoryData : ScriptableObject
     /// The list of all ItemStack in the Inventory.
     /// </summary>
     public List<ItemStack> Items => _items;
-
+    
 
     /// <summary>
     /// If the Inventory can not add new ItemStacks.
     /// </summary>
-    public bool IsFull => Items.Count == size;
-
+    public bool IsFull => Items.Count == _size;
+    
 
     /// <summary>
     /// Adds the specified Item in the Inventory.
     /// </summary>
-    public ItemStack Add(ItemData item)
+    /// <param name="item">The data of Item to add.</param>
+    /// <param name="stack">The ItemStack in this Inventory</param>
+    /// <returns>If the Item is successfully added to this Inventory.</returns>
+    public bool Add(ItemData item, out ItemStack stack)
     {
+        // Fail to add item if inventory is full.
         if (IsFull)
         {
-            Debug.Log("Inventory is full!");
-            return null;
+            stack = null;
+            return false;
         }
-        ItemStack stack = GetItemStack(item);
-        if (stack == null || stack.IsFull)
+        
+        // Finds the min ItemStack of item.
+        var stackInInventory = GetItemStack(item);
+        
+        if (stackInInventory == null || stackInInventory.IsFull)
         {
-            ItemStack res = new(item);
-            Items.Add(res);
-            return res;
+            stack = new ItemStack(item);
+            Items.Add(stack);
+            return true;
         }
-        else
-        {
-            stack.Number++;
-            return stack;
-        }
+
+        stackInInventory.Number++;
+        stack = stackInInventory;
+        return true;
     }
+    
 
     /// <summary>
     /// Removes the specified Item in the Inventory.
     /// </summary>
-    public ItemStack Remove(ItemData item)
+    public bool Remove(ItemData item, out ItemStack stack)
     {
-        ItemStack stack = GetItemStack(item);
-        if (stack == null)
+        var stackInInventory = GetItemStack(item);
+        
+        if (stackInInventory == null)
         {
-            Debug.Log("Inventory does not contain this item!");
-            return null;
+            stack = null;
+            return false;
         }
-        else
-        {
-            stack.Number--;
-            if (stack.IsEmpty)
-            {
-                Items.Remove(stack);
-                return null;
-            }
-            return stack;
-        }
+
+        stackInInventory.Number--;
+        stack = stackInInventory;
+        if (stackInInventory.IsEmpty) Items.Remove(stackInInventory);
+        return true;
     }
+    
 
     /// <summary>
     /// If the specified Item is in the Inventory
     /// </summary>
     public bool Contains(ItemData item)
     {
-        foreach (ItemStack stack in Items)
-        {
-            if (stack.Item == item)
-            {
-                return true;
-            }
-        }
-        return false;
+        return Items.Any(stack => stack.Item == item);
     }
+    
 
     /// <summary>
-    /// Finds the specified Item the Inventory.
+    /// Finds the min ItemStack of the specified Item the Inventory.
     /// </summary>
-    public ItemStack GetItemStack(ItemData item)
+    private ItemStack GetItemStack(ItemData item)
     {
         ItemStack res = null;
-        foreach (ItemStack stack in Items)
+        
+        foreach (var stack in Items)
         {
-            if (stack.Item == item)
+            if (stack.Item == item && (res == null || res.Number > stack.Number))
             {
-                if (res == null || res.Number > stack.Number)
-                {
-                    res = stack;
-                }
+                res = stack;
             }
         }
+        
         return res;
     }
 
 
     #region On Inspector
 
-    [SerializeField] private int size;
+    [SerializeField] private int _size;
     [SerializeField] private List<ItemStack> _items;
 
     #endregion

@@ -31,13 +31,11 @@ public class ItemData : ScriptableObject
 
 
     #region On Inspector
-
     [Header("Item Information")]
     [SerializeField] private string _name;
     [SerializeField] private Sprite _icon;
     [SerializeField, TextArea] private string _description;
     [SerializeField] private int _maxStackTimes;
-    
     #endregion
 
 }

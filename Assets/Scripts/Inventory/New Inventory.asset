@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e04809d59dd94e4ebdf34db845db300, type: 3}
   m_Name: New Inventory
   m_EditorClassIdentifier: 
-  size: 16
+  _size: 16
   _items:
   - _item: {fileID: 11400000, guid: 553455dc737707840814b23a4fc43a45, type: 2}
     _number: 3
