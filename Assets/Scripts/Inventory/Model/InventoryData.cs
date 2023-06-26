@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// An Inventory contains some Items.
@@ -15,7 +14,6 @@ public class InventoryData : ScriptableObject
     /// </summary>
     public List<ItemStack> Items => _items;
     
-
     /// <summary>
     /// If the Inventory can not add new ItemStacks.
     /// </summary>
@@ -26,7 +24,7 @@ public class InventoryData : ScriptableObject
     /// Adds the specified Item in the Inventory.
     /// </summary>
     /// <param name="item">The data of Item to add.</param>
-    /// <param name="stack">The ItemStack in this Inventory</param>
+    /// <param name="stack">The ItemStack in this Inventory.</param>
     /// <returns>If the Item is successfully added to this Inventory.</returns>
     public bool Add(ItemData item, out ItemStack stack)
     {
@@ -40,6 +38,7 @@ public class InventoryData : ScriptableObject
         // Finds the min ItemStack of item.
         var stackInInventory = GetItemStack(item);
         
+        // Add item in a new stack if stack is full or does not contain item.
         if (stackInInventory == null || stackInInventory.IsFull)
         {
             stack = new ItemStack(item);
@@ -47,32 +46,37 @@ public class InventoryData : ScriptableObject
             return true;
         }
 
+        // Add item in found stack.
         stackInInventory.Number++;
         stack = stackInInventory;
         return true;
     }
     
-
     /// <summary>
     /// Removes the specified Item in the Inventory.
     /// </summary>
+    /// <param name="item">The data of Item to remove.</param>
+    /// <param name="stack">The ItemStack in this Inventory.</param>
+    /// <returns>If the Item is successfully removed from this Inventory.</returns>
     public bool Remove(ItemData item, out ItemStack stack)
     {
+        // Finds the min ItemStack of item.
         var stackInInventory = GetItemStack(item);
         
+        // Fail to remove item if does not contain item.
         if (stackInInventory == null)
         {
             stack = null;
             return false;
         }
 
+        // Remove item in found stack.
         stackInInventory.Number--;
         stack = stackInInventory;
         if (stackInInventory.IsEmpty) Items.Remove(stackInInventory);
         return true;
     }
     
-
     /// <summary>
     /// If the specified Item is in the Inventory
     /// </summary>
@@ -83,7 +87,7 @@ public class InventoryData : ScriptableObject
     
 
     /// <summary>
-    /// Finds the min ItemStack of the specified Item the Inventory.
+    /// Finds the stack with the min number of items for the specified item.
     /// </summary>
     private ItemStack GetItemStack(ItemData item)
     {

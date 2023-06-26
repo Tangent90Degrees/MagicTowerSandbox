@@ -1,14 +1,14 @@
 using UnityEngine;
 
 /// <summary>
-/// A serialized item/number pair that can be set or retrieved.
+/// A serializable item/number pair that can be set or retrieved.
 /// </summary>
 [System.Serializable]
 public class ItemStack
 {
     
     /// <summary>
-    /// Initializes a new instance of the Pair record with the specified key and value.
+    /// Initializes a new item stack instance with the specified item and number.
     /// </summary>
     public ItemStack(ItemData item, int number)
     {
@@ -18,7 +18,7 @@ public class ItemStack
     
 
     /// <summary>
-    /// Initializes a new instance of the Pair record with the specified key.
+    /// Initializes a new item stack instance with the specified item.
     /// </summary>
     public ItemStack(ItemData item)
     {

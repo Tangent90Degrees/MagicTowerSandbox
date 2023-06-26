@@ -5,14 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d2ad0c2-fa20-4a9a-a968-6d842bc245bb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Magic Tower Sandbox/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magic Tower Sandbox/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/Panel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/Panel.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/TalentIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/TalentIcon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/TalentPanel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/TalentPanel.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Host.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Host.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Town.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Town.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Data.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Data/Joy.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Data/Joy.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Data/Species.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Data/Species/Human.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Data/Species/Human.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Data/Sword.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Data/Sword.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Model.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Model/CharacterData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Model/CharacterData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Model/CombatFactor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Model/CombatFactor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Model/CombatManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Model/CombatManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Model/EquipmentData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Model/EquipmentData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Model/SpeciesData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Model/SpeciesData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactions/InteractManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactions/InteractManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Controller/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Controller/Inventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Controller/InventoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Controller/InventoryManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Controller/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Controller/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Editor/ItemStackPropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Editor/ItemStackPropertyDrawer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Model/InventoryData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Model/InventoryData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Model/ItemData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Model/ItemData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Model/ItemStack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Model/ItemStack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/New Inventory.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/New Inventory.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/CursorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/CursorManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Singleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Singleton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +53,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/UI/PlayerInventoryUI.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -37,11 +72,12 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -101,6 +137,8 @@
       <workItem from="1687701662581" duration="26000" />
       <workItem from="1687701705476" duration="89000" />
       <workItem from="1687701806678" duration="5872000" />
+      <workItem from="1687750756476" duration="772000" />
+      <workItem from="1687751562682" duration="8783000" />
     </task>
     <servers />
   </component>

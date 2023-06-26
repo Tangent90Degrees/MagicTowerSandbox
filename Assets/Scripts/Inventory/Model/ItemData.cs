@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -10,32 +8,37 @@ public class ItemData : ScriptableObject
 {
 
     /// <summary>
-    /// The name of the Item.
+    /// The name of this item.
     /// </summary>
     public string Name => _name;
+    
 
     /// <summary>
     /// The icon shown on UI.
     /// </summary>
     public Sprite Icon => _icon;
+    
 
     /// <summary>
-    /// The description of the Item.
+    /// The description of this item.
     /// </summary>
     public string Description => _description;
+    
 
     /// <summary>
-    /// The maximum number of this Item in an ItemStack.
+    /// The maximum number of this item in stacks.
     /// </summary>
     public int MaxStackTimes => _maxStackTimes;
 
 
     #region On Inspector
+    
     [Header("Item Information")]
     [SerializeField] private string _name;
     [SerializeField] private Sprite _icon;
     [SerializeField, TextArea] private string _description;
     [SerializeField] private int _maxStackTimes;
+    
     #endregion
 
 }

@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -12,13 +10,13 @@ public class InteractManager : Singleton<InteractManager>
     /// <summary>
     /// This event invokes when a new interaction is selected.
     /// </summary>
-    public static event Action<IInteractive> OnInteractionSlected;
+    public static event Action<IInteractive> OnInteractionSelected;
 
 
     /// <summary>
     /// This event invokes when interaction changed to not selected.
     /// </summary>
-    public static event Action<IInteractive> OnInteractionUnslected;
+    public static event Action<IInteractive> OnInteractionUnselected;
 
 
     /// <summary>
@@ -30,22 +28,11 @@ public class InteractManager : Singleton<InteractManager>
         get => _selectedInteraction;
         set
         {
-            if (value != _selectedInteraction)
-            {
-                OnInteractionUnslected?.Invoke(_selectedInteraction);
-                _selectedInteraction = value;
-                OnInteractionSlected?.Invoke(_selectedInteraction);
-            }
+            if (value == _selectedInteraction) return;
+            OnInteractionUnselected?.Invoke(_selectedInteraction);
+            _selectedInteraction = value;
+            OnInteractionSelected?.Invoke(_selectedInteraction);
         }
-    }
-
-
-    /// <summary>
-    /// Call Interact method of SelectedInteraction.
-    /// </summary>
-    public static void Interact()
-    {
-        SelectedInteraction?.Interact();
     }
 
 
@@ -55,33 +42,28 @@ public class InteractManager : Singleton<InteractManager>
 
         if (Input.GetMouseButtonDown(0))
         {
-            Interact();
+            SelectedInteraction?.Interact();
         }
     }
 
 
     private void InteractionSelecting()
     {
-        IInteractive interactionAtCursorPosition = CursorManager.ColliderOnCursor ? CursorManager.ColliderOnCursor.GetComponent<IInteractive>() : null;
+        var interaction = CursorManager.ColliderOnCursor
+            ? CursorManager.ColliderOnCursor.GetComponent<IInteractive>()
+            : null;
 
-        if (interactionAtCursorPosition == null)
+        if (interaction == null)
         {
             SelectedInteraction = null;
         }
-        else if (Vector3.Distance(interactionAtCursorPosition.transform.position, Player.Position) < _maxInteractingDistance)
+        else if (Vector2.Distance(interaction.Position, Player.Position) < interaction.MaxDistance)
         {
-            SelectedInteraction = interactionAtCursorPosition;
+            SelectedInteraction = interaction;
         }
     }
-
-
-    #region On Inspector
-
-    [SerializeField] private float _maxInteractingDistance;
-
-    #endregion
-
-
+    
+    
     private static IInteractive _selectedInteraction;
 
 }
@@ -93,8 +75,16 @@ public class InteractManager : Singleton<InteractManager>
 public interface IInteractive
 {
     
-    public Transform transform { get; }
+    /// <summary>
+    /// The max distance between the player and this interaction that enables interacting.
+    /// </summary>
+    public float MaxDistance { get; }
 
+    /// <summary>
+    /// The world space position of its game object.
+    /// </summary>
+    public Vector2 Position { get; }
+    
     /// <summary>
     /// This method is called once interacts.
     /// </summary>

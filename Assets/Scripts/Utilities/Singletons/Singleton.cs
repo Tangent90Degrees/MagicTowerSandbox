@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -12,7 +10,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
     /// <summary>
     /// The only instance of this singleton.
     /// </summary>
-    public static T Instance => _instance;
+    protected static T Instance { get; private set; }
 
 
     /// <summary>
@@ -23,7 +21,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
     {
         if (Instance == null)
         {
-            _instance = this as T;
+            Instance = this as T;
         }
         else if (Instance != this)
         {
@@ -39,9 +37,8 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
     {
         if (Instance == this)
         {
-            _instance = null;
+            Instance = null;
         }
     }
     
-    private static T _instance;
 }
