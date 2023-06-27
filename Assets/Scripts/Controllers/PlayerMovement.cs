@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -8,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
+    
     #region Properties
 
     /// <summary>
@@ -23,7 +22,8 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Get the normalized direction vector from key inputs.
     /// </summary>
-    private Vector2 DirectionInput => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+    private static Vector2 DirectionInput => 
+        new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
 
     #endregion
 
@@ -58,4 +58,5 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D _rb;
     private Animator _anim;
+    
 }

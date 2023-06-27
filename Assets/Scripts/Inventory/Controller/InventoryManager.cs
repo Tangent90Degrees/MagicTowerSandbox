@@ -8,6 +8,9 @@ public class InventoryManager : Singleton<InventoryManager>
     /// </summary>
     public static event Action<Inventory> OnInventoryUpdates;
     
+    
+    public static ItemData CurrentUsingItem { get; set; }
+    
 
     /// <summary>
     /// Adds the specified item to the specified inventory.
