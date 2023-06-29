@@ -1,10 +1,15 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// A container of an item in player's inventory displayed on UI.
+/// </summary>
 public class ItemSlotUI : MonoBehaviour
 {
 
+    /// <summary>
+    /// The item stack in player's inventory this slot holds.
+    /// </summary>
     public ItemStack Stack
     {
         get => _stack;
@@ -14,38 +19,44 @@ public class ItemSlotUI : MonoBehaviour
             UpdatesSlotUI();
         }
     }
-
     
+    /// <summary>
+    /// The sprite of the slot container.
+    /// </summary>
     public Sprite SlotSprite
     {
         get => _slotImage.sprite;
         set => _slotImage.sprite = value;
     }
     
+    
     private void Awake()
     {
         _slotImage = GetComponent<Image>();
     }
+    
 
+    /// <summary>
+    /// Changes the sprite of the item image.
+    /// This method is called when the stack is changed.
+    /// </summary>
     private void UpdatesSlotUI()
     {
+        // Close item image if the stack is empty.
         if (Stack == null)
         {
-            _itemSprite.gameObject.SetActive(false);
-            _number.gameObject.SetActive(false);
+            _itemImage.gameObject.SetActive(false);
             return;
         }
         
-        _itemSprite.gameObject.SetActive(true);
-        _number.gameObject.SetActive(true);
-        
-        _itemSprite.sprite = Stack.Item.Icon;
-        _number.text = Stack.Number.ToString();
+        // Enable item image and set its sprite to the item icon.
+        _itemImage.gameObject.SetActive(true);
+        _itemImage.sprite = Stack.Item.Icon;
     }
 
 
-    [SerializeField] private Image _itemSprite;
-    [SerializeField] private Text _number;
+    [SerializeField] private Image _itemImage;
+    
 
     private Image _slotImage;
     private ItemStack _stack;

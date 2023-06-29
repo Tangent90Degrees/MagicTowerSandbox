@@ -6,8 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="8d2ad0c2-fa20-4a9a-a968-6d842bc245bb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Magic Tower Sandbox/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magic Tower Sandbox/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Controller/InventoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Controller/InventoryManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/ItemSlot.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/ItemSlot.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/ItemSlot.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/ItemSlot.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/ItemSlot_Selected.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/ItemSlot_Selected.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/ItemSlot_Selected.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/ItemSlot_Selected.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Town.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Town.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Carrot.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Carrot.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/New Inventory.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/New Inventory.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/ItemSlotUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/ItemSlotUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/PlayerInventoryUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/PlayerInventoryUI.cs" afterDir="false" />
     </list>
@@ -20,6 +27,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatValue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/Damage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/RaceData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/UI/ItemMessageUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/UI/PlayerInventoryUI.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -105,6 +117,7 @@
       <workItem from="1687750756476" duration="772000" />
       <workItem from="1687751562682" duration="8783000" />
       <workItem from="1687845399786" duration="2407000" />
+      <workItem from="1688034885131" duration="11841000" />
     </task>
     <servers />
   </component>
