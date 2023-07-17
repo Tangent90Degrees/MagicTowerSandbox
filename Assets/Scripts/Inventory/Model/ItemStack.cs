@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
 /// <summary>
 /// A serializable item/number pair that can be set or retrieved.
 /// </summary>
-[System.Serializable]
+[Serializable]
 public class ItemStack
 {
     
@@ -15,7 +16,6 @@ public class ItemStack
         Item = item;
         Number = number;
     }
-    
 
     /// <summary>
     /// Initializes a new item stack instance with the specified item.
@@ -33,9 +33,8 @@ public class ItemStack
     public ItemData Item
     {
         get => _item;
-        protected set => _item = value;
+        init => _item = value;
     }
-    
 
     /// <summary>
     /// The number of the item in the ItemStack.
@@ -51,7 +50,6 @@ public class ItemStack
     /// If number equals 0.
     /// </summary>
     public bool IsEmpty => Number == 0;
-    
 
     /// <summary>
     /// If number equals max stack times.
