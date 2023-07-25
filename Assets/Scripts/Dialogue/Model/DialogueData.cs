@@ -76,10 +76,10 @@ public class DialogueOption
     /// <summary>
     /// Initializes a new option instance with the specified receive message and dialogue.
     /// </summary>
-    public DialogueOption(string content, DialogueData startingDialogue)
+    public DialogueOption(string content, DialogueData nextDialogue)
     {
         Content = content;
-        StartingDialogue = startingDialogue;
+        NextDialogue = nextDialogue;
     }
     
 
@@ -95,14 +95,14 @@ public class DialogueOption
     /// <summary>
     /// The next dialogue this option starts.
     /// </summary>
-    public DialogueData StartingDialogue
+    public DialogueData NextDialogue
     {
-        get => _startingDialogue;
-        init => _startingDialogue = value;
+        get => _nextDialogue;
+        init => _nextDialogue = value;
     }
 
 
     [SerializeField, TextArea] private string _content;
-    [SerializeField] private DialogueData _startingDialogue;
+    [SerializeField] private DialogueData _nextDialogue;
 
 }

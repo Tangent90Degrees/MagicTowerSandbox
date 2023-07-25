@@ -6,7 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="d8e302d8-0ff6-4143-9544-3c2fd0f9baad" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Magic Tower Sandbox/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magic Tower Sandbox/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Model/ItemStack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Model/ItemStack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/ItemSlot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/ItemSlot.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/ItemSlot_Selected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artworks/UI/Containers/ItemSlot_Selected.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Host.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Host.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dialogue/Controller/DialogueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dialogue/Controller/DialogueManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dialogue/Model/DialogueData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dialogue/Model/DialogueData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/PlayerInventoryUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/PlayerInventoryUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +28,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Dialogue/Controller/DialogueManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Dialogue/UI/DialogueOptionSelectorUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Dialogue/UI/DialogueOptionUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/IsExternalInit.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -39,6 +51,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -99,6 +112,13 @@
       <workItem from="1688890388470" duration="362000" />
       <workItem from="1689495897496" duration="2777000" />
       <workItem from="1689596583247" duration="5185000" />
+      <workItem from="1689686118672" duration="5234000" />
+      <workItem from="1690181020641" duration="800000" />
+      <workItem from="1690189384152" duration="93000" />
+      <workItem from="1690189681684" duration="299000" />
+      <workItem from="1690190005549" duration="76000" />
+      <workItem from="1690190095603" duration="2574000" />
+      <workItem from="1690248023954" duration="7524000" />
     </task>
     <servers />
   </component>

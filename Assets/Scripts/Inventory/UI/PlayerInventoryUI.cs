@@ -10,13 +10,13 @@ public class PlayerInventoryUI : MonoBehaviour
     /// <summary>
     /// The index of current selected item.
     /// </summary>
-    private int SelectedSlotIndex
+    private int SelectedIndex
     {
-        get => _selectedSlotIndex;
+        get => _selectedIndex;
         set
         {
-            _selectedSlotIndex = (value + _slots.Count) % _slots.Count;
-            SelectSlot(SelectedSlotIndex);
+            _selectedIndex = (value + _slots.Count) % _slots.Count;
+            SelectSlot(SelectedIndex);
         }
     }
     
@@ -45,11 +45,11 @@ public class PlayerInventoryUI : MonoBehaviour
     {
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            SelectedSlotIndex++;
+            SelectedIndex++;
         }
         else if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            SelectedSlotIndex--;
+            SelectedIndex--;
         }
     }
 
@@ -71,7 +71,7 @@ public class PlayerInventoryUI : MonoBehaviour
             _slots[i].Stack = inventory.Items[i];
         }
         
-        SelectSlot(SelectedSlotIndex);
+        SelectSlot(SelectedIndex);
     }
 
 
@@ -105,6 +105,6 @@ public class PlayerInventoryUI : MonoBehaviour
     
 
     private List<ItemSlotUI> _slots;
-    private int _selectedSlotIndex;
+    private int _selectedIndex;
 
 }

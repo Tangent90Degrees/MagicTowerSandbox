@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _turns:
   - _character: {fileID: 0}
-    _content: 
+    _content: "\u4F60\u6545\u610F\u627E\u832C\u662F\u4E0D\u662F\uFF1F"
   - _character: {fileID: 0}
-    _content: 
-  _options: []
+    _content: "\u6492\u65E5\u6717\uFF01"
+  _options:
+  - _content: "\u554A\u554A\u554A\uFF01"
+    _nextDialogue: {fileID: 0}
+  - _content: "\u4E24\u53EA\u8001\u864E\u7231\u8DF3\u821E"
+    _nextDialogue: {fileID: 0}
+  - _content: "\u8BF6\u5466\uFF0C\u4F60\u5E72\u561B\uFF01"
+    _nextDialogue: {fileID: 0}
