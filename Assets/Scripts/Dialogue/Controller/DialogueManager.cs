@@ -1,4 +1,3 @@
-
 using System;
 using UnityEngine;
 
@@ -8,7 +7,21 @@ using UnityEngine;
 public class DialogueManager : Singleton<DialogueManager>
 {
 
+    /// <summary>
+    /// This event invokes after a new dialogue starts.
+    /// </summary>
+    public static event Action<DialogueData> OnDialogueStarting;
+
+    /// <summary>
+    /// This event invokes when turn is set.
+    /// </summary>
     public static event Action<DialogueTurn> OnTurnLoaded;
+
+    /// <summary>
+    /// This event invokes before the dialogue ends.
+    /// </summary>
+    public static event Action<DialogueData> OnDialogueEnding;
+
 
     /// <summary>
     /// The current dialogue is displaying.
@@ -19,8 +32,10 @@ public class DialogueManager : Singleton<DialogueManager>
         get => _dialogue;
         set
         {
+            if (!value) OnDialogueEnding?.Invoke(Dialogue);
             _dialogue = value;
             TurnIndex = 0;
+            if (IsDuringDialogue) OnDialogueStarting?.Invoke(Dialogue);
         }
     }
 
@@ -59,59 +74,50 @@ public class DialogueManager : Singleton<DialogueManager>
         }
     }
 
+
+    /// <summary>
+    /// The max distance between the player and the other speaker.
+    /// </summary>
+    public static float MaxDialogueDistance => Instance._maxDialogueDistance;
+
+
+    /// <summary>
+    /// If current turn is the last turn of the dialogue.
+    /// </summary>
     public static bool IsLastTurn => IsDuringDialogue && TurnIndex == Dialogue.Turns.Count - 1;
 
+    /// <summary>
+    /// If current turn is the last turn of the dialogue which does not end.
+    /// </summary>
     public static bool IsSelectingOption => IsLastTurn && !Dialogue.Ends;
+
+    /// <summary>
+    /// If current turn is the last turn of the dialogue which ends.
+    /// </summary>
     public static bool Ends => IsLastTurn && Dialogue.Ends;
 
 
+    /// <summary>
+    /// If is during a dialogue.
+    /// </summary>
     public static bool IsDuringDialogue => Dialogue;
 
 
-    public static DialogueOption SelectedOption
-    {
-        get => _selectedOption;
-        set => _selectedOption = value;
-    }
+    /// <summary>
+    /// The selected option of current dialogue.
+    /// </summary>
+    public static DialogueOption SelectedOption { get; set; }
+    
 
+    #region On Inspector
 
-    private void Update()
-    {
-        if (IsDuringDialogue && Input.GetButtonDown("Interact"))
-        {
-            Push();
-        }
-    }
+    [SerializeField] private float _maxDialogueDistance;
 
-
-    private static void Push()
-    {
-        if (IsSelectingOption)
-        {
-            Dialogue = SelectedOption.NextDialogue;
-        }
-        else if (Ends)
-        {
-            Dialogue = null;
-        }
-        else
-        {
-            TurnIndex++;
-        }
-    }
+    #endregion
 
 
     private static DialogueData _dialogue;
     private static DialogueTurn _turn;
     private static int _turnIndex;
-    private static DialogueOption _selectedOption;
-
-
-    private void Start()
-    {
-        Dialogue = _test;
-    }
-
-    [SerializeField] private DialogueData _test;
 
 }

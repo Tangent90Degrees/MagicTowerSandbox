@@ -380,7 +380,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 16
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 320, y: 180}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -617,6 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d39431ad5519a14fb1e75be610984d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxDialogueDistance: 1.5
   _test: {fileID: 11400000, guid: 8321bca17a29c714e993da8106254159, type: 2}
 --- !u!4 &1496811697
 Transform:

@@ -9,6 +9,7 @@ public class DialogueOptionUI : MonoBehaviour
 
     /// <summary>
     /// The option this UI bar is displaying.
+    /// Updates UI bar when being set.
     /// </summary>
     public DialogueOption Option
     {

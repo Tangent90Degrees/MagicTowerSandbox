@@ -21,25 +21,16 @@ public struct CombatValue
     
     [field: SerializeField]
     public int Intelligence { get; set; }
-    
-    
+
+
     public static int operator *(CombatValue lhs, CombatValue rhs)
     {
-        return 
-            (lhs.Strength * rhs.Strength 
-             + lhs.Flexibility * rhs.Flexibility 
-             + lhs.Intelligence * rhs.Intelligence) 
-            / 100;
+        return (lhs.Strength * rhs.Strength + lhs.Flexibility * rhs.Flexibility + lhs.Intelligence * rhs.Intelligence) / 100;
     }
     
     public static CombatValue operator +(CombatValue lhs, CombatValue rhs)
     {
-        return new CombatValue
-        (
-            lhs.Strength + rhs.Strength, 
-            lhs.Flexibility + rhs.Flexibility, 
-            lhs.Intelligence + rhs.Intelligence
-        );
+        return new CombatValue(lhs.Strength + rhs.Strength, lhs.Flexibility + rhs.Flexibility, lhs.Intelligence + rhs.Intelligence);
     }
     
 }

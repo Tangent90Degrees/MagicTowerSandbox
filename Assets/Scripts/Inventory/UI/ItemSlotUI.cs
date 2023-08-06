@@ -57,7 +57,6 @@ public class ItemSlotUI : MonoBehaviour
 
     [SerializeField] private Image _itemImage;
     
-
     private Image _slotImage;
     private ItemStack _stack;
 

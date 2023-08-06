@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class CharacterData : ScriptableObject
 {
@@ -11,8 +10,15 @@ public class CharacterData : ScriptableObject
 
     public RaceData Race => _race;
 
-    public int MaxHealth => _talent * Race.MaxHealth;
-    public int MaxMana => _talent * Race.MaxMana;
+    public CombatValue Talent => _talent;
+
+    public int MaxHealth => Talent * Race.MaxHealth;
+    public int MaxMana => Talent * Race.MaxMana;
+    public int Attack => Talent * Race.Attack;
+    public int MagicalAttack => Talent * Race.MagicalAttack;
+    public int Defence => Talent * Race.Defence;
+    public int MagicalDefence => Talent * Race.MagicalDefence;
+    
 
     #region On Inspector
 

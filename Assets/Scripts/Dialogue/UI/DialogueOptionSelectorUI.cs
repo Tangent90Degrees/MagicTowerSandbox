@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,24 @@ public class DialogueOptionSelectorUI : MonoBehaviour
     /// </summary>
     private static List<DialogueOption> Options => DialogueManager.Dialogue.Options;
 
+    /// <summary>
+    /// If current turn is the last turn of the dialogue which does not end.
+    /// </summary>
+    private static bool IsSelectingOption => DialogueManager.IsSelectingOption;
+
+    /// <summary>
+    /// The selected option of current dialogue.
+    /// </summary>
+    private static DialogueOption SelectedOption
+    {
+        get => DialogueManager.SelectedOption;
+        set => DialogueManager.SelectedOption = value;
+    }
+
+    /// <summary>
+    /// The index of selected option of Options.
+    /// Selects the option of specified index when being set.
+    /// </summary>
     private int SelectedIndex
     {
         get => _selectedIndex;
@@ -26,7 +45,7 @@ public class DialogueOptionSelectorUI : MonoBehaviour
     private void Awake()
     {
         _optionUIs = new List<DialogueOptionUI>(GetComponentsInChildren<DialogueOptionUI>());
-        DialogueManager.OnTurnLoaded += OptionsUILoading;
+        DialogueManager.OnTurnLoaded += LoadOptionsUI;
     }
 
     private void Update()
@@ -38,11 +57,23 @@ public class DialogueOptionSelectorUI : MonoBehaviour
     }
 
 
-    private void OptionsUILoading(DialogueTurn _)
+    /// <summary>
+    /// This method is called when the turn is set.
+    /// </summary>
+    private void LoadOptionsUI(DialogueTurn _)
     {
-        if (DialogueManager.IsSelectingOption)
+        if (IsSelectingOption)
         {
-            LoadOptionsUI();
+            // Disable all option UI.
+            _optionUIs.ForEach(i => i.Option = null);
+
+            // Enable option UIs to fit options in the model.
+            for (var i = 0; i < Options.Count; i++)
+            {
+                _optionUIs[i].Option = Options[i];
+            }
+            SelectedIndex = 0;
+
             gameObject.SetActive(true);
         }
         else
@@ -51,19 +82,9 @@ public class DialogueOptionSelectorUI : MonoBehaviour
         }
     }
 
-    private void LoadOptionsUI()
-    {
-        // Destroy all option UI.
-        _optionUIs.ForEach(i => i.Option = null);
-
-        for (var i = 0; i < Options.Count; i++)
-        {
-            _optionUIs[i].Option = Options[i];
-        }
-    }
-
     /// <summary>
     /// Selects the option of the index.
+    /// This method is called when SelectedIndex is set.
     /// </summary>
     private void SelectOption(int index)
     {
@@ -72,7 +93,7 @@ public class DialogueOptionSelectorUI : MonoBehaviour
         
         // Select the slot of index.
         _optionUIs[index].Sprite = _optionSelectedSprite;
-        DialogueManager.SelectedOption = _optionUIs[index].Option;
+        SelectedOption = _optionUIs[index].Option;
     }
     
 

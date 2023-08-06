@@ -2,15 +2,27 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A period of dialogue.
+/// </summary>
 [CreateAssetMenu(menuName = "Dialogue")]
 public class DialogueData : ScriptableObject
 {
     
+    /// <summary>
+    /// The list of all turns.
+    /// </summary>
     public List<DialogueTurn> Turns => _turns;
 
+    /// <summary>
+    /// The list of all options.
+    /// </summary>
     public List<DialogueOption> Options => _options;
     
 
+    /// <summary>
+    /// If this dialogue starts a new dialogue.
+    /// </summary>
     public bool Ends => Options.Count == 0;
     
 
@@ -59,9 +71,13 @@ public class DialogueTurn
         init => _content = value;
     }
     
-    
+
+    #region On Inspector
+
     [SerializeField] private CharacterData _character;
     [SerializeField, TextArea] private string _content;
+
+    #endregion
     
 }
 
@@ -102,7 +118,11 @@ public class DialogueOption
     }
 
 
+    #region On Inspector
+
     [SerializeField, TextArea] private string _content;
     [SerializeField] private DialogueData _nextDialogue;
+
+    #endregion
 
 }
