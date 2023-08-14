@@ -19,12 +19,6 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public Vector2 Velocity { get => _rb.velocity; set => _rb.velocity = value; }
 
-    /// <summary>
-    /// Get the normalized direction vector from key inputs.
-    /// </summary>
-    private static Vector2 DirectionInput => 
-        new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-
     #endregion
 
 
@@ -38,13 +32,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        _anim?.SetFloat("Horizontal", DirectionInput.x);
-        _anim?.SetFloat("Vertical", DirectionInput.y);
+        _anim?.SetFloat("Horizontal", InputManager.Move.x);
+        _anim?.SetFloat("Vertical", InputManager.Move.y);
     }
 
     private void FixedUpdate()
     {
-        Velocity = DirectionInput * Speed;
+        Velocity = InputManager.Move * Speed;
     }
 
     #endregion
@@ -55,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed;
 
     #endregion
+
 
     private Rigidbody2D _rb;
     private Animator _anim;

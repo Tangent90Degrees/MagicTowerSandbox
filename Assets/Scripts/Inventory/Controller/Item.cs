@@ -5,7 +5,7 @@ using UnityEngine;
 /// Destroy itself after collected.
 /// </summary>
 [RequireComponent(typeof(SpriteRenderer))]
-public class Item : MonoBehaviour, IInteractive
+public class Item : Interaction
 {
 
     /// <summary>
@@ -14,59 +14,32 @@ public class Item : MonoBehaviour, IInteractive
     public ItemData Data => _data;
     
 
-    /// <summary>
-    /// The max distance between the player and this item that enables collecting.
-    /// </summary>
-    public float MaxDistance => _maxDistance;
-    
-    /// <summary>
-    /// The world space position of this item.
-    /// </summary>
-    public Vector2 Position => transform.position;
-    
-
-    private void Awake()
-    {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    private void OnEnable()
-    {
-        InteractManager.OnInteractionSelected += SetSelectedImage;
-        InteractManager.OnInteractionUnselected += SetNotSelectedImage;
-    }
-
-    private void OnDestroy()
-    {
-        InteractManager.OnInteractionSelected -= SetSelectedImage;
-        InteractManager.OnInteractionUnselected -= SetNotSelectedImage;
-    }
-    
+    #region Interaction
 
     /// <summary>
     /// Collects this item.
     /// </summary>
-    public void Interact()
+    public override void Interact()
     {
         InventoryManager.AddItemToInventory(this, InventoryManager.PlayerInventory);
     }
 
-
-    private void SetSelectedImage(IInteractive interaction)
+    public override void OnSelected()
     {
-        if (interaction as Item == this)
-        {
-            _spriteRenderer.sprite = _selectedSprite;
-        }
+        _spriteRenderer.sprite = _selectedSprite;
     }
 
-
-    private void SetNotSelectedImage(IInteractive interaction)
+    public override void OnUnselected()
     {
-        if (interaction as Item == this)
-        {
-            _spriteRenderer.sprite = _sprite;
-        }
+        _spriteRenderer.sprite = _sprite;
+    }
+
+    #endregion
+
+
+    private void Awake()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
     
 
@@ -75,7 +48,6 @@ public class Item : MonoBehaviour, IInteractive
     [SerializeField] private ItemData _data;
     [SerializeField] private Sprite _sprite;
     [SerializeField] private Sprite _selectedSprite;
-    [SerializeField] private float _maxDistance;
 
     #endregion
 

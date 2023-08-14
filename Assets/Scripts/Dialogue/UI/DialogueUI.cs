@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,15 +14,44 @@ public class DialogueUI : MonoBehaviour
     /// The current turn of the dialogue.
     /// </summary>
     public static DialogueTurn Turn => DialogueManager.Turn;
+    
+
+    public void StartDialogueOfOption(DialogueOptionUI option)
+    {
+        DialogueManager.Dialogue = option.Option.NextDialogue;
+    }
+
+    /// <summary>
+    /// Pushes to next step of the dialogue process.
+    /// </summary>
+    public void Push()
+    {
+        if (_contentPrinter.IsPrinting)
+        {
+            // Finishes printing text.
+            _contentPrinter.StopPrinting(Turn.Content);
+        }
+        else if (DialogueManager.Ends)
+        {
+            // Close dialogue UI bar.
+            DialogueManager.Dialogue = null;
+        }
+        else if (!DialogueManager.IsSelectingOption)
+        {
+            // Next turn.
+            DialogueManager.TurnIndex++;
+        }
+        
+    }
 
 
     private void Awake()
     {
-        _text = GetComponentInChildren<Text>();
+        _optionUIs = new List<DialogueOptionUI>(GetComponentsInChildren<DialogueOptionUI>());
 
-        DialogueManager.OnDialogueStarting += _ => gameObject.SetActive(true);
-        DialogueManager.OnTurnLoaded += PrintContentOfTurn;
-        DialogueManager.OnDialogueEnding += _ => gameObject.SetActive(false);
+        DialogueManager.OnDialogueStarting += StartDialogueUI;
+        DialogueManager.OnTurnLoaded += UpdateDialogueUI;
+        DialogueManager.OnDialogueEnding += EndDialogueUI;
     }
 
     private void Update()
@@ -31,34 +62,30 @@ public class DialogueUI : MonoBehaviour
         }
     }
 
-
-    /// <summary>
-    /// Pushes to next step of the dialogue process.
-    /// </summary>
-    private void Push()
+    private void OnDistroy()
     {
-        if (_isPrintingText)
-        {
-            // Finishes printing text.
-            StopCoroutine(_printingCoroutine);
-            _isPrintingText = false;
-            _text.text = Turn.Content;
-        }
-        else if (DialogueManager.IsSelectingOption)
-        {
-            // Starts following dialogue.
-            DialogueManager.Dialogue = DialogueManager.SelectedOption.NextDialogue;
-        }
-        else if (DialogueManager.Ends)
-        {
-            // Close dialogue UI bar.
-            DialogueManager.Dialogue = null;
-        }
-        else
-        {
-            // Next turn.
-            DialogueManager.TurnIndex++;
-        }
+        DialogueManager.OnDialogueStarting -= StartDialogueUI;
+        DialogueManager.OnTurnLoaded -= UpdateDialogueUI;
+        DialogueManager.OnDialogueEnding -= EndDialogueUI;
+    }
+
+
+    private void StartDialogueUI(DialogueData dialogue)
+    {
+        _contentPrinter.gameObject.SetActive(true);
+        LoadOptions(DialogueManager.Dialogue);
+    }
+
+    private void EndDialogueUI(DialogueData dialogue)
+    {
+        _contentPrinter.gameObject.SetActive(false);
+        _optionsParent.gameObject.SetActive(false);
+    }
+
+    private void UpdateDialogueUI(DialogueTurn turn)
+    {
+        PrintContentOfTurn(turn);
+        _optionsParent.gameObject.SetActive(DialogueManager.IsSelectingOption);
     }
 
 
@@ -68,40 +95,30 @@ public class DialogueUI : MonoBehaviour
     private void PrintContentOfTurn(DialogueTurn turn)
     {
         if (!gameObject.activeSelf) return;
-        _printingCoroutine = PrintTextCoroutine(turn == null ? string.Empty : turn.Content);
-        StartCoroutine(_printingCoroutine);
+        var content = turn == null ? string.Empty : turn.Content;
+        _contentPrinter.Print(content);
     }
 
-
-    /// <summary>
-    /// The coroutine of printing text character by character.
-    /// </summary>
-    private IEnumerator PrintTextCoroutine(string text)
+    private void LoadOptions(DialogueData dialogue)
     {
-        // Clears all text.
-        _isPrintingText = true;
-        _text.text = string.Empty;
-
-        // Prints text character by character.
-        foreach (var character in text)
+        _optionUIs.ForEach(i => i.Option = null);
+        for (int i = 0; i < dialogue.Options.Count; i++)
         {
-            _text.text += character;
-            yield return new WaitForSeconds(_textPrintingDuration);
+            _optionUIs[i].Option = dialogue.Options[i];
         }
-
-        _isPrintingText = false;
     }
 
 
     #region On Inspector
 
-    [SerializeField] private float _textPrintingDuration;
+    [Header("Components")]
+
+    [SerializeField] private UITextPrinter _contentPrinter;
+    [SerializeField] private Transform _optionsParent;
 
     #endregion
-    
 
-    private Text _text;
-    private IEnumerator _printingCoroutine;
-    private bool _isPrintingText;
+
+    private List<DialogueOptionUI> _optionUIs;
 
 }

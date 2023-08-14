@@ -9,41 +9,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 273c5e721ad58784aa55d87cfd4ef118, type: 3}
-  m_Name: Human
+  m_Script: {fileID: 11500000, guid: 4ee14e117700838438ac45aa70ae3003, type: 3}
+  m_Name: IronSword
   m_EditorClassIdentifier: 
-  _name: Human
+  _name: Iron Sword
   _icon: {fileID: 0}
   _description: 
+  _maxStackTimes: 1
   _maxHealth:
-    <Strength>k__BackingField: 100
+    <Strength>k__BackingField: 0
     <Flexibility>k__BackingField: 0
     <Intelligence>k__BackingField: 0
   _maxMana:
     <Strength>k__BackingField: 0
     <Flexibility>k__BackingField: 0
-    <Intelligence>k__BackingField: 150
+    <Intelligence>k__BackingField: 0
   _attack:
-    <Strength>k__BackingField: 75
-    <Flexibility>k__BackingField: 25
+    <Strength>k__BackingField: 20
+    <Flexibility>k__BackingField: 0
     <Intelligence>k__BackingField: 0
   _magicalAttack:
     <Strength>k__BackingField: 0
     <Flexibility>k__BackingField: 0
-    <Intelligence>k__BackingField: 150
+    <Intelligence>k__BackingField: 0
   _defence:
-    <Strength>k__BackingField: 100
+    <Strength>k__BackingField: 0
     <Flexibility>k__BackingField: 0
     <Intelligence>k__BackingField: 0
   _magicalDefence:
-    <Strength>k__BackingField: 75
+    <Strength>k__BackingField: 0
     <Flexibility>k__BackingField: 0
-    <Intelligence>k__BackingField: 25
+    <Intelligence>k__BackingField: 0
   _moveSpeed:
     <Strength>k__BackingField: 0
-    <Flexibility>k__BackingField: 100
+    <Flexibility>k__BackingField: 0
     <Intelligence>k__BackingField: 0
   _attackSpeed:
     <Strength>k__BackingField: 0
-    <Flexibility>k__BackingField: 100
+    <Flexibility>k__BackingField: 20
     <Intelligence>k__BackingField: 0

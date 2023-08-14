@@ -102,12 +102,12 @@ public class DialogueManager : Singleton<DialogueManager>
     /// </summary>
     public static bool IsDuringDialogue => Dialogue;
 
-
-    /// <summary>
-    /// The selected option of current dialogue.
-    /// </summary>
-    public static DialogueOption SelectedOption { get; set; }
     
+    private void Start()
+    {
+        Dialogue = null;
+    }
+
 
     #region On Inspector
 

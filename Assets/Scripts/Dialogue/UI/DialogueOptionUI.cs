@@ -4,7 +4,7 @@ using UnityEngine.UI;
 /// <summary>
 /// An option bar in the selector bar of dialogue UI.
 /// </summary>
-public class DialogueOptionUI : MonoBehaviour
+public class DialogueOptionUI : UITextSlot
 {
 
     /// <summary>
@@ -23,30 +23,13 @@ public class DialogueOptionUI : MonoBehaviour
             }
             else
             {
-                _content.text = Option.Content;
+                Text = Option.Content;
                 gameObject.SetActive(true);
             }
         }
     }
-
-    /// <summary>
-    /// The sprite of this UI bar.
-    /// </summary>
-    public Sprite Sprite
-    {
-        set => _optionImage.sprite = value;
-    }
     
     
-    private void Awake()
-    {
-        _optionImage = GetComponent<Image>();
-        _content = GetComponentInChildren<Text>();
-    }
-    
-
-    private Text _content;
-    private Image _optionImage;
     private DialogueOption _option;
     
 }

@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueSpeaker : MonoBehaviour, IInteractive
+public class DialogueSpeaker : Interaction
 {
 
     public DialogueData Dialogue => _dialogue;
 
 
-    #region IInteractive
+    #region Interaction
 
-    public float MaxDistance => DialogueManager.MaxDialogueDistance;
-    public Vector2 Position => transform.position;
-    
-    public void Interact()
+    public override void Interact()
     {
         DialogueManager.Dialogue = Dialogue;
     }

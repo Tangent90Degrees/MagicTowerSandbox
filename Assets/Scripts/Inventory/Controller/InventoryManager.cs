@@ -40,6 +40,6 @@ public class InventoryManager : Singleton<InventoryManager>
     }
 
 
-    public static Inventory PlayerInventory => Player.Inventory;
+    public static Inventory PlayerInventory => GameManager.Player.Inventory;
     
 }
