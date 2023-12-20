@@ -5,18 +5,14 @@ public class CombatManager : Singleton<CombatManager>
 
     public event Action<CharacterData, Damage> OnDamageDeals;
 
-    public void TakeDamage(CharacterData character, Damage damage)
+    public static void DealDamage(Character from, Damage damage, Character to)
     {
-        switch (damage.Type)
-        {
-            case DamageType.Physical:
-                break;
-            case DamageType.Magical:
-                break;
-            case DamageType.Real:
-                break;
-        }
-        OnDamageDeals?.Invoke(character, damage);
+        from.DealDamage(damage, to);
+    }
+
+    public static void TakeDamage(Damage damage, Character to)
+    {
+        to.TakeDamage(damage);
     }
     
 }

@@ -63,6 +63,10 @@ public class EquipmentData : ItemData
     [SerializeField] private CombatValue _moveSpeed;
     [SerializeField] private CombatValue _attackSpeed;
 
+    [Header("Unique Buffs")]
+    
+    [SerializeField] private List<BuffData> _buffs;
+
     #endregion
 
 }

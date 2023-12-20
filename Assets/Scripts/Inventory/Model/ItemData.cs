@@ -6,24 +6,21 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Inventory/Item")]
 public class ItemData : ScriptableObject
 {
-
+    
     /// <summary>
     /// The name of this item.
     /// </summary>
     public string Name => _name;
-    
 
     /// <summary>
     /// The icon shown on UI.
     /// </summary>
     public Sprite Icon => _icon;
-    
 
     /// <summary>
     /// The description of this item.
     /// </summary>
     public string Description => _description;
-    
 
     /// <summary>
     /// The maximum number of this item in stacks.

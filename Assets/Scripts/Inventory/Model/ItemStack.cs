@@ -11,24 +11,21 @@ public class ItemStack
     /// <summary>
     /// Initializes a new item stack instance with the specified item and number.
     /// </summary>
-    public ItemStack(ItemData item, int number)
+    public ItemStack(ItemData item, int number = 1)
     {
         Item = item;
         Number = number;
     }
 
-    /// <summary>
-    /// Initializes a new item stack instance with the specified item.
-    /// </summary>
-    public ItemStack(ItemData item)
-    {
-        Item = item;
-        Number = 1;
-    }
-    
 
     /// <summary>
-    /// The item of the ItemStack.
+    /// This event invokes when the number of item is changed.
+    /// </summary>
+    public event Action<int> NumberChanged;
+
+
+    /// <summary>
+    /// The item of this item stack.
     /// </summary>
     public ItemData Item
     {
@@ -37,22 +34,26 @@ public class ItemStack
     }
 
     /// <summary>
-    /// The number of the item in the ItemStack.
+    /// The number of the item in this item stack.
     /// </summary>
     public int Number
     {
         get => _number;
-        set => _number = Mathf.Clamp(value, 0, Item.MaxStackTimes);
+        set
+        {
+            _number = Mathf.Clamp(value, 0, Item.MaxStackTimes);
+            NumberChanged?.Invoke(Number);
+        }
     }
-    
+
 
     /// <summary>
-    /// If number equals 0.
+    /// If the number equals 0.
     /// </summary>
     public bool IsEmpty => Number == 0;
 
     /// <summary>
-    /// If number equals max stack times.
+    /// If the number reaches the max stack times.
     /// </summary>
     public bool IsFull => Number == Item.MaxStackTimes;
 

@@ -1,17 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// A collective item in scene.
-/// Destroy itself after collected.
+/// A chest that stores items.
 /// </summary>
-[RequireComponent(typeof(SpriteRenderer))]
-public class Item : Interaction
+[RequireComponent(typeof(SpriteRenderer), typeof(Inventory))]
+public class Chest : Interaction
 {
 
     /// <summary>
     /// The ItemData of this Item.
     /// </summary>
-    public ItemData Data => _data;
+    public Inventory Inventory => _inventory;
     
 
     #region Interaction
@@ -21,7 +22,7 @@ public class Item : Interaction
     /// </summary>
     public override void Interact()
     {
-        InventoryManager.AddItemToInventory(this, InventoryManager.PlayerInventory);
+        InventoryManager.OpenedInventory = InventoryManager.OpenedInventory == Inventory ? null : Inventory;
     }
 
     public override void OnSelected()
@@ -39,6 +40,7 @@ public class Item : Interaction
 
     private void Awake()
     {
+        _inventory = GetComponent<Inventory>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _defaultMaterial = _spriteRenderer.material;
     }
@@ -46,12 +48,11 @@ public class Item : Interaction
 
     #region On Inspector
 
-    [SerializeField] private ItemData _data;
     [SerializeField] private Material _selectedMaterial;
 
     #endregion
 
-
+    private Inventory _inventory;
     private SpriteRenderer _spriteRenderer;
     private Material _defaultMaterial;
 

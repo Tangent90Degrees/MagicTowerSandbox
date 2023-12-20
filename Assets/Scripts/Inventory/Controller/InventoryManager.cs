@@ -3,12 +3,20 @@ using System;
 public class InventoryManager : Singleton<InventoryManager>
 {
 
-    /// <summary>
-    /// This event invokes when items of an inventory are changed.
-    /// </summary>
-    public static event Action<Inventory> OnInventoryUpdates;
-    
-    
+    public static event Action<Inventory> OnInventoryOpened;
+    public static event Action<Inventory> OnInventoryClosed;
+
+    public static Inventory OpenedInventory
+    {
+        get => _openedInventory;
+        set
+        {
+            if (OpenedInventory) OnInventoryClosed?.Invoke(OpenedInventory);
+            _openedInventory = value;
+            if (OpenedInventory) OnInventoryOpened?.Invoke(OpenedInventory);
+        }
+    }
+   
     public static ItemData CurrentUsingItem { get; set; }
     
 
@@ -20,8 +28,6 @@ public class InventoryManager : Singleton<InventoryManager>
     public static bool AddItemToInventory(Item item, Inventory inventory)
     {
         if (!inventory.Add(item)) return false;
-        
-        OnInventoryUpdates?.Invoke(inventory);
         Destroy(item.gameObject);
         return true;
     }
@@ -33,13 +39,13 @@ public class InventoryManager : Singleton<InventoryManager>
     /// <returns>If item is successfully removed from inventory.</returns>
     public static bool RemoveItemFromInventory(ItemData item, Inventory inventory)
     {
-        if (!inventory.Remove(item)) return false;
-
-        OnInventoryUpdates?.Invoke(inventory);
-        return true;
+        return inventory.Remove(item);
     }
 
 
     public static Inventory PlayerInventory => GameManager.Player.Inventory;
+
+
+    private static Inventory _openedInventory;
     
 }

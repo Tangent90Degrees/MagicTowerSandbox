@@ -51,6 +51,7 @@
         "temp/": true,
         "Temp/": true
     },
+    "dotnet.preferCSharpExtension": true,
 
     // "editor.tokenColorCustomizations": { // 禁用所有主题的斜体
     //     "textMateRules": [

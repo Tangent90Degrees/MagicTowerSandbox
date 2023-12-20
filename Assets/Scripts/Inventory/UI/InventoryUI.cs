@@ -6,25 +6,71 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
 
-    public List<UIItemSlot> Slots => _slots;
-
-    public List<ItemStack> Items => _inventory?.Items;
-
-
-    public void UpdateInventoryUI(Inventory inventory)
+    /// <summary>
+    /// The inventory data this inventory UI is displaying.
+    /// Automatically update UI or data when set.
+    /// </summary>
+    public Inventory Inventory
     {
-        if (inventory.Data == _inventory)
+        get => _inventory;
+        set
         {
-            UpdateUIFromData();
+            if (Inventory)
+            {
+                Inventory.OnInventoryUpdate -= UpdateUIFromData;
+                UpdateDataFromUI();
+            }
+
+            _inventory = value;
+
+            if (Inventory)
+            {
+                UpdateUIFromData();
+                CloseMessage();
+                gameObject.SetActive(true);
+                Inventory.OnInventoryUpdate += UpdateUIFromData;
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 
+
+    #region UI Slots
+
+    public List<UIItemSlot> Slots => _slots;
+
+    public List<ItemStack> Items => Inventory?.Items;
+    
+
+    /// <summary>
+    /// Updates Inventory UI from data.
+    /// </summary>
     private void UpdateUIFromData()
     {
-        Slots.ForEach(i => i.ItemStack = null);
-        for (var i = 0; i < Items.Count; i++)
+        Dictionary<ItemStack, bool> itemStackIsDisplayed = new();
+        Items.ForEach(i => itemStackIsDisplayed.Add(i, false));
+
+        foreach (var slot in Slots)
         {
-            Slots[i].ItemStack = Items[i];
+            if (Items.Contains(slot.ItemStack))
+            {
+                itemStackIsDisplayed[slot.ItemStack] = true;
+            }
+            else
+            {
+                slot.ItemStack = null;
+            }
+        }
+
+        foreach (var stackIsDisplayed in itemStackIsDisplayed)
+        {
+            if (!stackIsDisplayed.Value)
+            {
+                Slots.Find(i => i.ItemStack == null).ItemStack = stackIsDisplayed.Key;
+            }
         }
     }
 
@@ -36,6 +82,11 @@ public class InventoryUI : MonoBehaviour
             Items.Add(slot.ItemStack);
         }
     }
+
+    #endregion
+
+
+    #region UI Message Bar
 
     /// <summary>
     /// Displays information of the specified item stack.
@@ -59,39 +110,25 @@ public class InventoryUI : MonoBehaviour
         _messageBar.gameObject.SetActive(false);
     }
 
+    #endregion
 
-    private void Awake()
+
+    protected virtual void Awake()
     {
         _slots = new List<UIItemSlot>(_slotsParent.GetComponentsInChildren<UIItemSlot>());
-    }
-
-    private void OnEnable()
-    {
-        InventoryManager.OnInventoryUpdates += UpdateInventoryUI;
-        UpdateUIFromData();
-        CloseMessage();
-    }
-
-    private void OnDisable()
-    {
-        InventoryManager.OnInventoryUpdates -= UpdateInventoryUI;
     }
 
 
     #region On Inspector
 
-    [Header("Inventory Settings")]
-
-    [SerializeField] private InventoryData _inventory;
-
     [Header("UI Components")]
-
     [SerializeField] private Transform _slotsParent;
     [SerializeField] private UIMessageBar _messageBar;
 
     #endregion
 
 
+    private Inventory _inventory;
     private List<UIItemSlot> _slots;
 
 }

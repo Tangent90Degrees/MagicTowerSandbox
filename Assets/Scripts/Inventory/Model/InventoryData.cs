@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class InventoryData : ScriptableObject
     /// If the Inventory can not add new ItemStacks.
     /// </summary>
     public bool IsFull => Items.Count == _size;
-    
+
 
     /// <summary>
     /// Adds the specified Item in the Inventory.
